@@ -1,10 +1,10 @@
 // Ship class
 export default class Ship {
     // constructor
-    constructor(length, hp = length, sunk = false) {
+    constructor(length) {
         this.length = length;
-        this.hp = hp;
-        this.sunk = sunk;
+        this.hp = length;
+        this.sunk = false;
     }
 
     // hit 

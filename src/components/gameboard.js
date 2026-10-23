@@ -1,11 +1,19 @@
 export default class GameBoard {
     // constructor with dyanmic size
     constructor(size = 8) {
-        this.board = Array(size * size).fill(null);
+        this.boards = Array(size * size).fill(null);
     }
 
-    // prin the board
-    getBoard(){
-        return this.board;
+    // print the board
+    printBoard(){
+        return this.boards;
+    }
+
+    // place ships
+    placeShip(index, marker = ".") {
+        this.boards[index] = marker;
     }
 }
+
+const gameboard = new GameBoard();
+console.log(gameboard.printBoard());

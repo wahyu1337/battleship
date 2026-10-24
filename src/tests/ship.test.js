@@ -1,24 +1,24 @@
-import Ship from "../components/ship";
+import Ships from "../components/ship";
 
-test("Adding a new ship and console the info", () => {
-    const ship1 = new Ship(3);
 
-    // testing unit
-    expect(ship1.length).toBe(3);
-    expect(ship1.hp).toBe(3);
-    expect(ship1.sunk).toBe(false);
+describe("Ships factory function", () => {
+    test("Membuat kapal", () => {
+        const marine = Ships("Marine");
+        
+        // testing unit
+        expect(marine.length).toBe(3);        
+        expect(marine.hp).toBe(3);        
+        expect(marine.isSunk()).toBe(false);
+    })
 
-    // testing hit logic
-    ship1.hit();
-    ship1.isSunk();
-    expect(ship1.hp).toBe(2);
-    expect(ship1.sunk).toBe(false);
-    ship1.hit();
-    ship1.isSunk();
-    expect(ship1.hp).toBe(1);
-    expect(ship1.sunk).toBe(false);
-    ship1.hit();
-    ship1.isSunk();
-    expect(ship1.hp).toBe(0);
-    expect(ship1.sunk).toBe(true);
-})
+    test("Tenggelamkan kapal", () => {
+        const marine = Ships("Marine", 2);
+
+        // testing unit
+        expect(marine.length).toBe(2);    
+        marine.hit();
+        marine.hit();
+        expect(marine.hp).toBe(0);    
+        expect(marine.isSunk()).toBe(true);    
+    })
+});

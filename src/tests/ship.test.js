@@ -6,8 +6,8 @@ describe("Ships factory function", () => {
         const marine = new Ships("Marine");
         
         // testing unit
-        expect(3).toBe(marine.length);        
-        expect(3).toBe(marine.length);        
+        expect(3).toBe(marine.size);        
+        expect(3).toBe(marine.size);        
         expect(marine.isSunk()).toBe(false);
     })
 
@@ -15,7 +15,7 @@ describe("Ships factory function", () => {
         const marine = new Ships("Marine", 2);
 
         // testing unit
-        expect(2).toBe(marine.lengths);    
+        expect(2).toBe(marine.size);    
         marine.hit();
         marine.hit();
         expect(marine.hp).toBe(0);    

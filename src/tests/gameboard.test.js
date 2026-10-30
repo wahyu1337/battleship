@@ -12,7 +12,7 @@ describe("Gameboard", () => {
 
     // placeShips
     test("Place a ships", ()  => {
-        gameBoard.placeShips(marine.name, 1, 'horizontal')
+        gameBoard.placeShips(marine, 1, 'horizontal')
         expect(gameBoard.boards[0]).toBe('Marine');
         expect(gameBoard.boards[1]).toBe('Marine');
         expect(gameBoard.boards[2]).toBe('Marine');

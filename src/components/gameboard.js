@@ -11,14 +11,14 @@ export default class GameBoard {
 
     // place ships
     placeShips(ships, position, direction = 'horizontal') {
-        this.boards[position] = ships;
+        this.boards[position] = ships.name;
         
         // set if horizontal adding it's right and left depend on length
         // length = 3
         if(direction === 'horizontal') {
             if (ships.lengths === 3) {
-                this.boards[position + 1] = ships;
-                this.boards[position - 1] = ships;            
+                this.boards[position + 1] = ships.name;
+                this.boards[position - 1] = ships.name;            
             }
         }
         

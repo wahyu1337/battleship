@@ -1,8 +1,7 @@
 export default class GameBoard {
     // constructor with dyanmic size
     constructor(size = 8) {
-        this.boards = Array(size * size).fill(null);
-        this.coords = [];
+        this.boards = Array(size * size).fill(null);        
     }
 
     // print the board
@@ -11,15 +10,9 @@ export default class GameBoard {
     }
 
     // place ships
-    placeShips() {
-        const rows = this.size;
-        const col = this.size;
-
-        for (let i = 0; i < rows; i++){
-            this.coords[i] = [];
-        }
+    placeShips(position, direction = 'horizontal') {
+        this.boards[position] = position;
+        
+        return this.boards;
     }
 }
-
-const gameboard = new GameBoard();
-console.log(gameboard.getBoards());

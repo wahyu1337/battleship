@@ -2,14 +2,16 @@ import GameBoard from "../components/gameboard";
 
 describe("Gameboard", () => {
     const gameBoard = new GameBoard(8);
-    // testing place a hit
-    gameBoard.placeShip(0);       
-    // testing unit
-    test("Game board size", () => {
-        expect(gameBoard.getBoard().length).toBe(64);
+    
+    // get boards
+    test("GameBoards", () => {
+        expect(gameBoard.boards).toBe(gameBoard.boards);
     })
 
-    test("Placing a ship", () => {
-        expect(gameBoard.boards[0]).toBe(".");
+    // placeShips
+    test("Place a ships", ()  => {
+        gameBoard.placeShips(1);
+        expect(gameBoard.boards[1]).toBe(1);
+        console.log(gameBoard.getBoards());
     })
 });

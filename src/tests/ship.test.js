@@ -3,7 +3,7 @@ import Ships from "../components/ship";
 
 describe("Ships factory function", () => {
     test("Membuat kapal", () => {
-        const marine = Ships("Marine");
+        const marine = new Ships("Marine");
         
         // testing unit
         expect(marine.length).toBe(3);        
@@ -12,7 +12,7 @@ describe("Ships factory function", () => {
     })
 
     test("Tenggelamkan kapal", () => {
-        const marine = Ships("Marine", 2);
+        const marine = new Ships("Marine", 2);
 
         // testing unit
         expect(marine.length).toBe(2);    

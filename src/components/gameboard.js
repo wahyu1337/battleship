@@ -1,8 +1,17 @@
 export default class GameBoard {
     // constructor with dyanmic size
-    constructor(size = 8) {
-        this.boards = Array(size * size).fill(null);        
-    }
+    constructor(rows = 7, columns = 7) {
+        // 7x7 board (default)
+        this.boards = [];
+
+        // set board depends on input
+        for (let i = 0; i < rows; i++) {
+            this.boards[i] = [];
+            for (let j = 0; j < columns; j++) {
+                this.boards[i][j] = null;               
+            }
+        }        
+    };
 
     // print the board
     getBoards(){

@@ -24,43 +24,40 @@ export default class GameBoard {
     // place ships
     placeShips(ships, rows,  cols, direction = 'horizontal') {
         // check the size first and direction
-        this.boards[rows][cols] = ships.name;
-        this.tracks[ships.name] = {
-            hp: ships.hp,
-            isSunk: ships.sunk,
-        }
+        this.boards[rows][cols] = ships;
+        this.tracks = ships;        
 
         // horizontal
        if (direction === 'horizontal' && ships.size === 3) {
-            this.boards[rows][cols] = ships.name;
-            this.boards[rows][cols + 1] = ships.name;
-            this.boards[rows][cols - 1] = ships.name;
+            this.boards[rows][cols] = ships;
+            this.boards[rows][cols + 1] = ships;
+            this.boards[rows][cols - 1] = ships;
        } else if (direction === 'horizontal' && ships.size === 2) {
-            this.boards[rows][cols] = ships.name;
-            this.boards[rows][cols + 1] = ships.name;
+            this.boards[rows][cols] = ships;
+            this.boards[rows][cols + 1] = ships;
        }
 
         // vertical
         if (direction === 'vertical' && ships.size === 3) {
-            this.boards[rows][cols] = ships.name;
-            this.boards[rows + 1][cols] = ships.name;
-            this.boards[rows - 1][cols] = ships.name;
+            this.boards[rows][cols] = ships;
+            this.boards[rows + 1][cols] = ships;
+            this.boards[rows - 1][cols] = ships;
         } else if (direction === 'vertical'  && ships.size === 2) {
-            this.boards[rows][cols] = ships.name;
-            this.boards[rows + 1][cols] = ships.name;
+            this.boards[rows][cols] = ships;
+            this.boards[rows + 1][cols] = ships;
         }
     }
 
     // receiveAttack
     receiveAttack(x, y) {        
-        // check if there's ship and subtract 1 hp
-        if (this.boards[x][y] === this.tracks.[ships.name]) {
-            // hit function
-            this.tracks[ships.name].hp--;
-            this.boards[x][y] = "x";
-
+        if(this.boards[x][y] !== null) {
+            const shipName = this.boards[x][y].name;
+            
+            // hit the ship
+            this.tracks[shipName].hit();            
+            this.boards[x][y] = `${this.tracks[shipName].name}'s hit!`;
         } else {
-            this.boards[x][y] = ".";            
+            this.boards[x][y] = ".";
         }
     }
 }

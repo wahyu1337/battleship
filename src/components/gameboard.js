@@ -1,4 +1,5 @@
 export default class GameBoard {    
+    tracks = {};
     // constructor with dyanmic size
     constructor(rows = 7, columns = 7) {
         this.rows = rows;
@@ -24,6 +25,10 @@ export default class GameBoard {
     placeShips(ships, rows,  cols, direction = 'horizontal') {
         // check the size first and direction
         this.boards[rows][cols] = ships.name;
+        this.tracks[ships.name] = {
+            hp: ships.hp,
+            isSunk: ships.sunk,
+        }
 
         // horizontal
        if (direction === 'horizontal' && ships.size === 3) {
@@ -47,13 +52,15 @@ export default class GameBoard {
     }
 
     // receiveAttack
-    receiveAttack(x, y, ships = '') {        
+    receiveAttack(x, y) {        
         // check if there's ship and subtract 1 hp
-        if (this.boards[x][y] !== null) {
+        if (this.boards[x][y] === this.tracks.[ships.name]) {
             // hit function
-            this.boards[x][y] = `x`;
+            this.tracks[ships.name].hp--;
+            this.boards[x][y] = "x";
+
         } else {
-            this.boards[x][y] = '.';            
+            this.boards[x][y] = ".";            
         }
     }
 }

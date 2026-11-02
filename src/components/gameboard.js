@@ -25,10 +25,37 @@ export default class GameBoard {
         // check the size first and direction
         this.boards[rows][cols] = ships.name;
 
-        if (direction === 'vertical') {
+        // horizontal
+       if (direction === 'horizontal' && ships.size === 3) {
             this.boards[rows][cols] = ships.name;
-            this.boards[rows - 1][cols] = ships.name;
+            this.boards[rows][cols + 1] = ships.name;
+            this.boards[rows][cols - 1] = ships.name;
+       } else if (direction === 'horizontal' && ships.size === 2) {
+            this.boards[rows][cols] = ships.name;
+            this.boards[rows][cols + 1] = ships.name;
+       }
+
+        // vertical
+        if (direction === 'vertical' && ships.size === 3) {
+            this.boards[rows][cols] = ships.name;
             this.boards[rows + 1][cols] = ships.name;
+            this.boards[rows - 1][cols] = ships.name;
+        } else if (direction === 'vertical'  && ships.size === 2) {
+            this.boards[rows][cols] = ships.name;
+            this.boards[rows + 1][cols] = ships.name;
+        }
+    }
+
+    // receiveAttack
+    receiveAttack(x, y, ships = '') {
+        let tracks = [];
+
+        // check if there's ship and subtract 1 hp
+        if (this.boards[x][y] !== null) {
+            // hit function
+            this.boards[x][y] = `${ships.name}'s hit!`                                        
+        } else {
+            tracks.push(this.boards[x][y]);
         }
     }
 }

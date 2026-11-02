@@ -24,38 +24,47 @@ export default class GameBoard {
     // place ships
     placeShips(ships, rows,  cols, direction = 'horizontal') {
         // check the size first and direction
-        this.boards[rows][cols] = ships;
-        this.tracks = ships;        
+        // only 1
+        this.boards[rows][cols] = ships.name;
+        // put the ships into track var
+        this.tracks[ships.name] = ships;        
 
         // horizontal
        if (direction === 'horizontal' && ships.size === 3) {
-            this.boards[rows][cols] = ships;
-            this.boards[rows][cols + 1] = ships;
-            this.boards[rows][cols - 1] = ships;
+            this.boards[rows][cols] = ships.name;
+            this.boards[rows][cols + 1] = ships.name;
+            this.boards[rows][cols - 1] = ships.name;
        } else if (direction === 'horizontal' && ships.size === 2) {
-            this.boards[rows][cols] = ships;
-            this.boards[rows][cols + 1] = ships;
+            this.boards[rows][cols] = ships.name;
+            this.boards[rows][cols + 1] = ships.name;
        }
 
         // vertical
         if (direction === 'vertical' && ships.size === 3) {
-            this.boards[rows][cols] = ships;
-            this.boards[rows + 1][cols] = ships;
-            this.boards[rows - 1][cols] = ships;
+            this.boards[rows][cols] = ships.name;
+            this.boards[rows + 1][cols] = ships.name;
+            this.boards[rows - 1][cols] = ships.name;
         } else if (direction === 'vertical'  && ships.size === 2) {
-            this.boards[rows][cols] = ships;
-            this.boards[rows + 1][cols] = ships;
+            this.boards[rows][cols] = ships.name;
+            this.boards[rows + 1][cols] = ships.name;
         }
     }
 
     // receiveAttack
-    receiveAttack(x, y) {        
-        if(this.boards[x][y] !== null) {
-            const shipName = this.boards[x][y].name;
-            
-            // hit the ship
-            this.tracks[shipName].hit();            
-            this.boards[x][y] = `${this.tracks[shipName].name}'s hit!`;
+    receiveAttack(x, y) {
+        // create temporary cell
+        const cell = this.boards[x][y];
+
+        // do nothing if cell already hits
+        if (cell === "x" || cell === ".") return; 
+
+        if (cell !== null) {
+            // take ship's name in cell
+            const shipName = cell;
+
+            // hit the ships
+            this.tracks[shipName].hit();
+            this.boards[x][y] = "X";
         } else {
             this.boards[x][y] = ".";
         }

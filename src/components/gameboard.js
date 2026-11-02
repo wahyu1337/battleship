@@ -1,4 +1,4 @@
-export default class GameBoard {
+export default class GameBoard {    
     // constructor with dyanmic size
     constructor(rows = 7, columns = 7) {
         this.rows = rows;
@@ -47,15 +47,13 @@ export default class GameBoard {
     }
 
     // receiveAttack
-    receiveAttack(x, y, ships = '') {
-        let tracks = [];
-
+    receiveAttack(x, y, ships = '') {        
         // check if there's ship and subtract 1 hp
         if (this.boards[x][y] !== null) {
             // hit function
-            this.boards[x][y] = `${ships.name}'s hit!`                                        
+            this.boards[x][y] = `x`;
         } else {
-            tracks.push(this.boards[x][y]);
+            this.boards[x][y] = '.';            
         }
     }
 }

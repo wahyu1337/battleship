@@ -69,4 +69,8 @@ export default class GameBoard {
       this.boards[x][y] = ".";
     }
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> gameboard

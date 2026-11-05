@@ -1,13 +1,17 @@
 export default class CreatePlayer {
-    playerBoards = {};
-    // constructor
-    constructor(name) {
-        this.name = name;
-    }
+  playerBoards = {};
+  // constructor
+  constructor(name) {
+    this.name = name;
+  }
 
-    getBoard(gameboard) {
-        if (playerBoards[gameboard] === null) {
-            this.playerBoards = gameboard;
-        }
-    }
+  // get player board
+  createBoard(gameboard) {
+    return (this.getPlayerBoards = gameboard);
+  }
+
+  // print players board
+  getPlayerBoards() {
+    return this.playerBoards;
+  }
 }
